@@ -1,0 +1,52 @@
+Initialize repository and push to github through 
+commands:
+
+1. Make readme file
+
+echo "ReactJS" >> ReadMe.md
+
+2. Initialize git repository
+
+git init
+
+3. Add ReadMe file to github repository
+git add README.md
+
+4. Commit to git with message
+git commit -m "first-commit"
+
+5. Make a branch on git
+git branch -M main
+
+6. Add origin branch to remote
+git remote add origin 
+https://github.com/TanishqSehgal7/ReactJS.git
+
+7. Push branch to origin
+git push -u origin main
+
+===========================================================
+
+package-lock.json file, some information..
+Here it is : 
+
+1. Dependency Version Locking: Locks exact versions.
+2. Specific Version Recording: Records exact nested dependency versions.
+3. Dependency Resolution: Ensures consistent installs.
+4. Consistency & Reproducibility: Same versions for all.
+5. Avoid Manual Editing: Risk of conflicts.
+
+In a nutshell, `package-lock.json` lists and locks 
+down specific versions of all project dependencies, 
+ensuring consistent installations and preventing 
+version conflicts. It's hands-off for manual edits to 
+avoid potential issues.
+
+===========================================================
+
+# Strucutre of a Basic React project
+
+## 1. src folder ->
+
+All the files are contained within this folder 
+
