@@ -31,7 +31,8 @@ package-lock.json file, some information..
 Here it is : 
 
 1. Dependency Version Locking: Locks exact versions.
-2. Specific Version Recording: Records exact nested dependency versions.
+2. Specific Version Recording: Records exact nested dependency 
+versions.
 3. Dependency Resolution: Ensures consistent installs.
 4. Consistency & Reproducibility: Same versions for all.
 5. Avoid Manual Editing: Risk of conflicts.
@@ -130,15 +131,65 @@ React controls all the UI updation of the app for which we
 need React Hooks which help us make the updated values of 
 different variables visible to the UI.
 
+====================================================================
 
+createRoot() method -> this creates a DOM like structure exactly like
+the browser. It compares the maine DOM and the DOM created itself, the
+(Virtual DOM) and only updates the elements which have some updation
+or changes. While browser DOM re-builds the entire DOM again and re-paints
+it on the webpage. This is called page reload.
 
+React uses Fiber algorithm behind the scene to update the Virtual DOM
+The goal of React Fiber is to increase it suitability for areas like 
+animation, layout, and gestures. Its main feature is incremental UI 
+rendering. When UI is being updated through some network calls or when
+UI is getting simultaneous updates at a time, then it has to be updated
+multiple times till the last update is populated. So to optimize this,
+React Fiber algorithm was implemented.
 
+It splits rendering into multiple chunks and spread it out over multiple
+frames. It can also pause, abort or reuse work as new updation, 
+assign priority to different types of updates.
 
+Reconcillation - its is a react algorithm which re-considers what
+to be updated in the UI and what not to be updated. This basically 
+compares React Tree structure (Virtual DOm) and browser DOM and 
+updates UI accordingly.
 
+An update is a change in the data used to render a React app. It is
+usually the result of "setState" and eventually results in a 
+re-render.
 
+When you render a React App, a tree of nodes that describes the app
+is generated and saved in the memory. This tree is flushed into the
+rendering environment. When the app is updated, a new tree is generated
+and the new tree is diffed with the previous tree to compute which
+operations are neeed to update the rendered app.
 
+Diffing Algorithm High Level Description:
+=> Different component types are assumed to generate substantially
+different trees. React will not attempt to diff them but rather 
+replace the old tree completely.
+=> Diffing of lists is performed using keys, Keys should be stable,
+predictable, and unique.
 
+In a UI, it is not necessary for every update to be applied immediately
+In fact, doing so can be wasteful, causing frames to drop and 
+degrading the user experience.
 
+Different updates have different priorities, like an animation 
+update needs to complete more quickly than, say, an update from a 
+data store.
 
+Push based approach -> requires app (programmer) to decide how 
+to schedule work. 
 
+Pull based approach -> allows the framework (React) to be smart and
+make those decisions for you.
 
+PRIMARY GOAL OF FIBER IS TO ENABLE REACT TO TAKE ADVANTAGE OF 
+THE SCHEDULING. Specifically we need to be able to:
+1. Pause work and come back to it later.
+2. Assign priority to different types of work.
+3. Reuse previously completed work.
+4. Abort work if it is no longer needed.
