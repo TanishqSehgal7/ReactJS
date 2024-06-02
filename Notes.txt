@@ -44,9 +44,101 @@ avoid potential issues.
 
 ===========================================================
 
-# Strucutre of a Basic React project
+ReactDOM/Virtual DOM - react creates its own DOM 
+and compares it to the actual browser dom and
+updates only those elements which need an updation
+or any change.
 
-## 1. src folder ->
+ReactDOM.createRoot(document.getElementById('root'))
+.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
 
-All the files are contained within this folder 
+In virtual DOM there is a method called 
+createRoot() which creates a root element which
+will be the outermost container for the HTML
+webpage.
+
+root.render() -> this renders the React App. Using
+jsx, we can render html elements into a webpage
+using javascript.
+
+
+function App() {
+  const [count, setCount] = useState(0)
+  return (
+    <>
+      <h1>Hello World!!</h1>
+      <p className="read-the-docs">
+        This is my first React Project
+      </p>
+    </>
+  )
+}
+
+export default App
+
+App is a function which return HTML elements that 
+are to be rendered inside the root element.
+
+In vite, react script is directly loaded inside
+the html page using the script tag just like the 
+standard way of loading a basic javascript file.
+
+In order to return multiple components inside the react app,
+we need to wrap them up inside an empty tag called
+fragment <></>
+Without a fragment only one element/component can be 
+rendered.
+
+IN a react app which is made using Vite, the javascript
+files should always have the extension as .jsx
+.js files would throw an error.
+
+While making components, always keep the component name
+starting with capital letters which prevents errors
+be it in Vite project or be it npx create-react-app
+project.
+
+
+function App() {
+  const userName = "Tanishq";
+  return (
+    <>
+      <h1>Hello World!!</h1>
+      <p className="read-the-docs">
+        This is my first React Project with username {username}
+      </p>
+    </>
+  )
+}
+
+{username} ->  this is the way we can inject javascript inside the
+returned HTML content. But this only takes up the evaluated 
+expression, ie, no code logic/changes can be done here. Rather,
+it only accepts the evaluated values/variables etc.
+
+React.createElement() is automatically injected by Babel
+which is a transpiler toolchain that is mainly used to 
+convert ECMAScript 2015+ code into a backwards compatible 
+version of JavaScript in current and older browsers 
+or environments.
+
+React controls all the UI updation of the app for which we
+need React Hooks which help us make the updated values of 
+different variables visible to the UI.
+
+
+
+
+
+
+
+
+
+
+
+
 
