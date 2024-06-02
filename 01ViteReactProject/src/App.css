@@ -40,3 +40,23 @@
 .read-the-docs {
   color: #888;
 }
+
+.customButton {
+  padding: 10px;
+  background-color: #1a9ff8aa;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.customButton:hover {
+  background-color: #0099ffaa;
+  filter: drop-shadow(0 0 0.5em #0099ffaa);
+}
+
+.customButton:active {
+  background-color: #0099ffaa;
+  filter: drop-shadow(0 0 1em rgb(0, 0, 0));
+}
