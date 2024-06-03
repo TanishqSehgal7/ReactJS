@@ -193,3 +193,9 @@ THE SCHEDULING. Specifically we need to be able to:
 2. Assign priority to different types of work.
 3. Reuse previously completed work.
 4. Abort work if it is no longer needed.
+
+===========================================================================
+
+Props in React -> props makes the same component re-usable for different
+scenarios and is written only once as a separate component.
+ 
