@@ -198,4 +198,139 @@ THE SCHEDULING. Specifically we need to be able to:
 
 Props in React -> props makes the same component re-usable for different
 scenarios and is written only once as a separate component.
- 
+Props is a way by which we can send specific values and populate them in
+React component elements.
+
+===========================================================================
+
+                            Hooks in React:
+
+Hooks let us use different react features into our components like state
+management, memoization, optimization etc.
+
+1. State Hooks: State lets a component “remember” information like user input. 
+For example, a form component can use state to store the input value, while 
+an image gallery component can use state to store the selected image index.
+
+useState Hook: declares a state variable that you can update directly. It keeps
+a track of the values and stores their recent state. It lets you add a state 
+variable to your component.
+
+Syntax: const [state, setState] = useState(initialState)
+state is the variable from which the recent value can be obtained
+setState is a function which is called to keep a track of the most 
+recent state.
+
+Usage
+-> Adding state to a component
+-> Updating state based on the previous state
+-> Updating objects and arrays in state
+-> Avoiding recreating the initial state
+-> Resetting state with a key
+-> Storing information from previous renders
+
+Eg: 1. const [count, setCount] = useState(0);
+
+2. const [todos, setTodos] = useState(() => createTodos());
+
+initialState: The value you want the state to be initially. It can be a value 
+of any type, but there is a special behavior for functions. This argument is 
+ignored after the initial render.
+If you pass a function as initialState, it will be treated as an initializer 
+function. It should be pure, should take no arguments, and should return a value 
+of any type. React will call your initializer function when initializing the component, 
+and store its return value as the initial state.
+
+useState returns an array with exactly two values:
+1. The current state. During the first render, it will match the initialState you have passed.
+2. The set function that lets you update the state to a different value and trigger a re-render.
+
+
+Updating State Based on previous state in done by the following way:
+
+function handleClick() {
+  setAge(a => a + 1); // setAge(42 => 43)
+  setAge(a => a + 1); // setAge(43 => 44)
+  setAge(a => a + 1); // setAge(44 => 45)
+}
+
+import { useState } from 'react';
+
+export default function Counter() {
+  const [age, setAge] = useState(42);
+
+  function increment() {
+    setAge(age => age + 1);
+  }
+
+  return (
+    <>
+      <h1>Your age: {age}</h1>
+      <button onClick={() => {
+        increment();
+        increment();
+        increment();
+      }}>+3</button>
+      <button onClick={() => {
+        increment();
+      }}>+1</button>
+    </>
+  );
+}
+
+2. Performance Hooks: A common way to optimize re-rendering performance is to skip unnecessary work. 
+For example, you can tell React to reuse a cached calculation or to skip a re-render if the data 
+has not changed since the previous render.
+
+To skip calculations and unnecessary re-rendering, use one of these Hooks:
+
+-> useMemo lets you cache the result of an expensive calculation.
+-> useCallback lets you cache a function definition before passing it down to an optimized component.
+
+Sometimes, you can’t skip re-rendering because the screen actually needs to update. In that case, you can 
+improve performance by separating blocking updates that must be synchronous (like typing 
+into an input) from non-blocking updates which don’t need to block the user interface (like updating a chart).
+
+useCallback -> is a React Hook that lets you cache a function definition between re-renders.
+const cachedFn = useCallback(fn, dependencies)
+
+Usage
+-> Skipping re-rendering of components
+-> Updating state from a memoized callback
+-> Preventing an Effect from firing too often
+-> Optimizing a custom Hook
+
+Syntax: useCallback(fn, dependencies)
+
+fn -> The function value that you want to cache. It can take any arguments and return any values. React will 
+return (not call!) your function back to you during the initial render. On next renders, React will give you 
+the same function again if the dependencies have not changed since the last render. Otherwise, it will give you 
+the function that you have passed during the current render, and store it in case it can be reused later. 
+React will not call your function. The function is returned to you so you can decide when and whether to call it.
+
+-> dependencies: The list of all reactive values referenced inside of the fn code. Reactive values include 
+props, state, and all the variables and functions declared directly inside your component body. 
+If your linter is configured for React, it will verify that every reactive value is correctly specified as a 
+dependency. The list of dependencies must have a constant number of items and be written inline 
+like [dep1, dep2, dep3]. React will compare each dependency with its previous value using the 
+Object.is comparison algorithm.
+
+When you optimize rendering performance, you will sometimes need to cache the functions that you pass to child 
+components. Let’s first look at the syntax for how to do this, and then see in which cases it’s useful.
+
+To cache a function between re-renders of your component, wrap its definition into the useCallback Hook:
+
+import { useCallback } from 'react';
+
+export default function ProductPage({ productId, referrer, theme }) {
+  const handleSubmit = useCallback((orderDetails) => {
+    post('/product/' + productId + '/buy', {
+      referrer,
+      orderDetails,
+    });
+  }, [productId, referrer]);
+
+  On the initial render, useCallback returns the fn function you have passed.
+
+During subsequent renders, it will either return an already stored fn  function from the last render 
+(if the dependencies haven’t changed), or return the fn function you have passed during this render.
