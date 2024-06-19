@@ -4,7 +4,7 @@ function SimpleInterestCalculatorUI() {
  
     return (
         <>
-            <div>Simple Interest Calculator</div>
+            <div className='p-20 text-center'>Simple Interest Calculator</div>
         </>
     )
 }
@@ -13,7 +13,7 @@ function CompoundInterestCalculatorUI() {
     
     return (
         <>
-            <div>Compound Interest Calculator</div>
+            <div className='p-20 text-center'>Compound Interest Calculator</div>
         </>
     )
 }

@@ -22,20 +22,20 @@ export function TabLayout(
 
     return (
         <>
-            <div className='flex flex-row justify-evenly text-2xl border border-white rounded-xl'>
+            <div className='flex flex-row justify-evenly text-2xl border border-white rounded-xl text-center'>
                     {tabsUI.map(
                         (tab, index) => (
-                            <button key={index} 
+                            <div key={index} 
                                 className={
                                 `${ activeTab === index? `${activeTabCSSProp && activeTabCSSProp}` : `${inActiveTabCSSProp && inActiveTabCSSProp}` }`
                             }
                             onClick={() => HandleClick(index)}>
                                 {tab.title}
-                            </button>
+                            </div>
                     ))}
             </div>
 
-            <div className='flex-col text-2xl mt-10'>
+            <div className='flex-col text-2xl'>
                 {
                     tabsUI[activeTab] && tabsUI[activeTab].content
                 }
