@@ -1,19 +1,21 @@
 import React from 'react'
 
-export function SimpleInterestCalculatorUI() {
+function SimpleInterestCalculatorUI() {
  
     return (
         <>
-            <div className='bg-green-400'>Simple Interest Calculator</div>
+            <div>Simple Interest Calculator</div>
         </>
     )
 }
 
-export function CompoundInterestCalculatorUI() {
+function CompoundInterestCalculatorUI() {
     
     return (
         <>
-            <div className='bg-green-400'>Compound Interest Calculator</div>
+            <div>Compound Interest Calculator</div>
         </>
     )
 }
+
+export {SimpleInterestCalculatorUI, CompoundInterestCalculatorUI}
