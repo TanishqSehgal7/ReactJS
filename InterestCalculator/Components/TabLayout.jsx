@@ -6,8 +6,7 @@ export function TabLayout(
     {
     activeTabCSSProp="",
     inActiveTabCSSProp=""
-}
-) {
+}) {
 
     const [activeTab, setActiveTab] = useState(0)
 
@@ -22,11 +21,11 @@ export function TabLayout(
 
     return (
         <>
-            <div className='flex flex-row justify-evenly text-2xl border border-white rounded-xl text-center'>
+            <div className='w-full flex flex-row justify-evenly text-2xl'>
                     {tabsUI.map(
                         (tab, index) => (
                             <div key={index} 
-                                className={
+                                className={ 
                                 `${ activeTab === index? `${activeTabCSSProp && activeTabCSSProp}` : `${inActiveTabCSSProp && inActiveTabCSSProp}` }`
                             }
                             onClick={() => HandleClick(index)}>
@@ -35,7 +34,7 @@ export function TabLayout(
                     ))}
             </div>
 
-            <div className='flex-col text-2xl'>
+            <div className='flex flex-col'>
                 {
                     tabsUI[activeTab] && tabsUI[activeTab].content
                 }
