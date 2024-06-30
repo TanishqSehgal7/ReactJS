@@ -17,17 +17,34 @@ function SimpleInterestCalculatorUI({
 
                     <div className='flex flex-col mt-10'>
                         <p className='text-white text-sm mb-2'>Principal Amount</p>
-                        <input value={Number(principalAmount)} onClick={(e) => e.target.value = ''} onChange={(e) => onPrincipalChange && onPrincipalChange(Number(e.target.value))} className='border border-none rounded-xl ps-5 pe-5 text-black' type='number' placeholder='Principal Amount'></input>
+                        <input 
+                        value={Number(principalAmount)} 
+                        onClick={(e) => e.target.value = ''} 
+                        onChange={(e) => onPrincipalChange && onPrincipalChange(Number(e.target.value))} 
+                        className='border border-none rounded-xl ps-5 pe-5 text-black' 
+                        type='number' placeholder='Principal Amount'>
+                        </input>
                     </div>
 
                     <div className='flex flex-col mt-10'>
                         <p className='text-white text-sm mb-2'>Rate of Interest Per Anum</p>
-                        <input value={Number(rateOfInterest)} onClick={(e) => e.target.value = ''} onChange={(e) => onRateOfInterestChange && onRateOfInterestChange(Number(e.target.value))} className='border border-none rounded-xl ps-5 pe-5 text-black' type='number' placeholder='@%'></input>
+                        <input 
+                        value={Number(rateOfInterest)} 
+                        onClick={(e) => e.target.value = ''} 
+                        onChange={(e) => onRateOfInterestChange && onRateOfInterestChange(Number(e.target.value))} 
+                        className='border border-none rounded-xl ps-5 pe-5 text-black' type='number' 
+                        placeholder='@%'>
+                        </input>
                     </div>
 
                     <div className='flex flex-col mt-10'>
                         <p className='text-white text-sm mb-2'>Duration: </p>
-                        <input value={timeDuration}  onChange={(e) => onTimeDurationChange && onTimeDurationChange(Number(e.target.value))} className='border border-none rounded-xl ps-5 pe-5 text-black' type='range' min={0} max={50} placeholder='Duration'></input>
+                        <input 
+                        value={timeDuration}  
+                        onChange={(e) => onTimeDurationChange && onTimeDurationChange(Number(e.target.value))} 
+                        className='border border-none rounded-xl ps-5 pe-5 text-black' 
+                        type='range' min={0} max={50} placeholder='Duration'>
+                        </input>
                     </div>
 
                 </div>
@@ -59,12 +76,21 @@ function CompoundInterestCalculatorUI(
 
                     <div className='flex flex-col mt-10'>
                         <p className='text-white text-sm mb-2'>Principal Amount</p>
-                        <input value={Number(principalAmount)} onChange={(e) => principalAmount = Number(e.target.value)} className='border border-none rounded-xl ps-5 pe-5 text-black'type='number' placeholder='Principal Amount'></input>
+                        <input 
+                        value={Number(principalAmount)} 
+                        onChange={(e) => principalAmount = Number(e.target.value)} 
+                        className='border border-none rounded-xl ps-5 pe-5 text-black'
+                        type='number' placeholder='Principal Amount'>
+                        </input>
                     </div>
 
                     <div className='flex flex-col mt-10'>
                         <p className='text-white text-sm mb-2'>Rate of Interest Per Anum</p>
-                        <input value={Number(rateOfInterest)} onChange={(e) => rateOfInterest = Number(e.target.value)} className='border border-none rounded-xl ps-5 pe-5 text-black' type='number' placeholder='@%'></input>
+                        <input 
+                        value={Number(rateOfInterest)} 
+                        onChange={(e) => rateOfInterest = Number(e.target.value)} 
+                        className='border border-none rounded-xl ps-5 pe-5 text-black' 
+                        type='number' placeholder='@%'></input>
                     </div>
 
                     <div className='flex flex-col mt-10'>                        

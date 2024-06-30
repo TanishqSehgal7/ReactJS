@@ -1,5 +1,5 @@
 import './App.css'
-import {useCallback, useEffect, useState } from 'react';
+import {useCallback, useState } from 'react';
 import {SimpleInterestCalculatorUI, CompoundInterestCalculatorUI} from '../Components/TabsContent'
 
 function App() {
@@ -38,28 +38,20 @@ function App() {
   }
 
   const calculateSiOrCiAsPerTab = useCallback(() => {
-
     if(tabsUI[activeTab].content == SimpleInterestCalculatorUI) {
-        
-      useEffect(() => {
-        calculateSI(principal, rate, duration)
-      }, [activeTab, principal, rate, duration, interest])
-      
+      console.log("UI is Simple Int Calc")
+      calculateSI(principal, rate, duration)
     } else if(tabsUI[activeTab].content === CompoundInterestCalculatorUI) {
-      
-      useEffect(() => {
-        calculateCI(principal, rate, duration, compundingType, interest)
-      }, [activeTab, principal, rate, duration, compundingType, interest])
-    
+      console.log("UI is Compound Int Calc")
+      calculateCI(principal, rate, duration, compundingType, interest)
     }
-
   }, [activeTab, principal, rate, duration, compundingType, interest])
+  
 
   const calculateSI = (p, r, d) => {
     setInterest(Math.floor((p*r*d)/100))
     console.log(`SI Calculated: ${interest}`)
   }
-
 
   const calculateCI = (p,r,d,ct) => {
     setInterest(Math.floor(
@@ -95,7 +87,7 @@ function App() {
               </div>
 
               <div className='flex flex-row justify-center w-auto flex-nowrap'>
-                <button onClick={() => calculateSiOrCiAsPerTab()} className='bg-cyan-900 border border-white rounded-xl p-5 text-white justify-center mb-10 hover:bg-cyan-800 '>Calculate Interest</button>
+                <button onClick={calculateSiOrCiAsPerTab()} className='bg-cyan-900 border border-white rounded-xl p-5 text-white justify-center mb-10 hover:bg-cyan-800 '>Calculate Interest</button>
               </div>
 
             </div>
