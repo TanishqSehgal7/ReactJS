@@ -11,7 +11,6 @@ function InputBox(
     currencyDisabled = false,
     className=""}
 ) {
-
     const amountInputId = useId()
 
     return (
@@ -36,7 +35,7 @@ function InputBox(
             <div className="w-1/2 flex flex-wrap justify-end text-right">
                 
                 <p className="text-white/100 mb-2 w-full">Currency Type</p>
-                
+
                 <select className="rounded-lg px-1 py-1 text-black/100 bg-slate-200 p-2 cusror-pointer outline-none"
                     value={selectCurrency} 
                     disabled = {currencyDisabled}
